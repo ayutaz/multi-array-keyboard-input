@@ -793,6 +793,74 @@ public partial class @TestActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""KeyConfigTest"",
+            ""id"": ""f2d9fac0-92f5-4dca-9e1e-8ab194aa0d06"",
+            ""actions"": [
+                {
+                    ""name"": ""Q"",
+                    ""type"": ""Value"",
+                    ""id"": ""79c84ade-cab1-48e4-910c-2d482d42ccc0"",
+                    ""expectedControlType"": ""Key"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchJapanese"",
+                    ""type"": ""Value"",
+                    ""id"": ""bdfcfc89-35ec-4375-b672-5bd425a5d254"",
+                    ""expectedControlType"": ""Key"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchFranch"",
+                    ""type"": ""Value"",
+                    ""id"": ""6d70570b-b45a-4d8b-add9-e740643df24d"",
+                    ""expectedControlType"": ""Key"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""abc136db-6b73-4cd7-ad34-72f25bcbf397"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Q"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4eaceb0b-9a80-4bf0-8c88-0f14c874dd00"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchJapanese"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33e6ef78-7838-4ea4-b9f5-3156c8f8f663"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchFranch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -814,6 +882,11 @@ public partial class @TestActions : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // KeyConfigTest
+        m_KeyConfigTest = asset.FindActionMap("KeyConfigTest", throwIfNotFound: true);
+        m_KeyConfigTest_Q = m_KeyConfigTest.FindAction("Q", throwIfNotFound: true);
+        m_KeyConfigTest_SwitchJapanese = m_KeyConfigTest.FindAction("SwitchJapanese", throwIfNotFound: true);
+        m_KeyConfigTest_SwitchFranch = m_KeyConfigTest.FindAction("SwitchFranch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1023,6 +1096,55 @@ public partial class @TestActions : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // KeyConfigTest
+    private readonly InputActionMap m_KeyConfigTest;
+    private IKeyConfigTestActions m_KeyConfigTestActionsCallbackInterface;
+    private readonly InputAction m_KeyConfigTest_Q;
+    private readonly InputAction m_KeyConfigTest_SwitchJapanese;
+    private readonly InputAction m_KeyConfigTest_SwitchFranch;
+    public struct KeyConfigTestActions
+    {
+        private @TestActions m_Wrapper;
+        public KeyConfigTestActions(@TestActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Q => m_Wrapper.m_KeyConfigTest_Q;
+        public InputAction @SwitchJapanese => m_Wrapper.m_KeyConfigTest_SwitchJapanese;
+        public InputAction @SwitchFranch => m_Wrapper.m_KeyConfigTest_SwitchFranch;
+        public InputActionMap Get() { return m_Wrapper.m_KeyConfigTest; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(KeyConfigTestActions set) { return set.Get(); }
+        public void SetCallbacks(IKeyConfigTestActions instance)
+        {
+            if (m_Wrapper.m_KeyConfigTestActionsCallbackInterface != null)
+            {
+                @Q.started -= m_Wrapper.m_KeyConfigTestActionsCallbackInterface.OnQ;
+                @Q.performed -= m_Wrapper.m_KeyConfigTestActionsCallbackInterface.OnQ;
+                @Q.canceled -= m_Wrapper.m_KeyConfigTestActionsCallbackInterface.OnQ;
+                @SwitchJapanese.started -= m_Wrapper.m_KeyConfigTestActionsCallbackInterface.OnSwitchJapanese;
+                @SwitchJapanese.performed -= m_Wrapper.m_KeyConfigTestActionsCallbackInterface.OnSwitchJapanese;
+                @SwitchJapanese.canceled -= m_Wrapper.m_KeyConfigTestActionsCallbackInterface.OnSwitchJapanese;
+                @SwitchFranch.started -= m_Wrapper.m_KeyConfigTestActionsCallbackInterface.OnSwitchFranch;
+                @SwitchFranch.performed -= m_Wrapper.m_KeyConfigTestActionsCallbackInterface.OnSwitchFranch;
+                @SwitchFranch.canceled -= m_Wrapper.m_KeyConfigTestActionsCallbackInterface.OnSwitchFranch;
+            }
+            m_Wrapper.m_KeyConfigTestActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Q.started += instance.OnQ;
+                @Q.performed += instance.OnQ;
+                @Q.canceled += instance.OnQ;
+                @SwitchJapanese.started += instance.OnSwitchJapanese;
+                @SwitchJapanese.performed += instance.OnSwitchJapanese;
+                @SwitchJapanese.canceled += instance.OnSwitchJapanese;
+                @SwitchFranch.started += instance.OnSwitchFranch;
+                @SwitchFranch.performed += instance.OnSwitchFranch;
+                @SwitchFranch.canceled += instance.OnSwitchFranch;
+            }
+        }
+    }
+    public KeyConfigTestActions @KeyConfigTest => new KeyConfigTestActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -1041,5 +1163,11 @@ public partial class @TestActions : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IKeyConfigTestActions
+    {
+        void OnQ(InputAction.CallbackContext context);
+        void OnSwitchJapanese(InputAction.CallbackContext context);
+        void OnSwitchFranch(InputAction.CallbackContext context);
     }
 }

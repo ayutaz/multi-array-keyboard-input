@@ -771,6 +771,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "KeyConfigTest",
+            "id": "f2d9fac0-92f5-4dca-9e1e-8ab194aa0d06",
+            "actions": [
+                {
+                    "name": "Q",
+                    "type": "Value",
+                    "id": "79c84ade-cab1-48e4-910c-2d482d42ccc0",
+                    "expectedControlType": "Key",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SwitchJapanese",
+                    "type": "Value",
+                    "id": "bdfcfc89-35ec-4375-b672-5bd425a5d254",
+                    "expectedControlType": "Key",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SwitchFranch",
+                    "type": "Value",
+                    "id": "6d70570b-b45a-4d8b-add9-e740643df24d",
+                    "expectedControlType": "Key",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "abc136db-6b73-4cd7-ad34-72f25bcbf397",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Q",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4eaceb0b-9a80-4bf0-8c88-0f14c874dd00",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchJapanese",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33e6ef78-7838-4ea4-b9f5-3156c8f8f663",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchFranch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
