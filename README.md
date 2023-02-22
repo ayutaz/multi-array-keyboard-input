@@ -1,7 +1,8 @@
-# UnityTemplateRepository
-Unity Project template Repository
+# multi-keyboard-input-test
+
+キーボード配列の複数の配列に対応した入力テスト
 
 # Demo
 
 # requirements
-* Unity 2022.2.0f1
+* Unity 2021.3.16f1
